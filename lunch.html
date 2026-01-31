@@ -8,62 +8,28 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2981283253767611"
      crossorigin="anonymous"></script>
     <style>
-        html[data-theme="dark"] {
-            --bg-color: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
-            --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-            --text-color: #f8fafc;
-        }
-        html[data-theme="light"] {
-            --bg-color: #f8fafc;
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --glass-border: rgba(0, 0, 0, 0.1);
-            --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
-            --text-color: #0f172a;
-        }
-        body {
-            margin: 0;
-            padding: 2rem 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 20%);
-            color: var(--text-color);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-            overflow-x: hidden;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+        html[data-theme="dark"] { --bg-color: #0f172a; --card-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); --text-color: #f8fafc; }
+        html[data-theme="light"] { --bg-color: #f8fafc; --card-bg: rgba(255, 255, 255, 0.8); --glass-border: rgba(0, 0, 0, 0.1); --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); --text-color: #0f172a; }
+        body { margin: 0; padding: 2rem 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 20%); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 2rem; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
         .container { width: 100%; max-width: 600px; padding: 0 2rem; box-sizing: border-box; }
         .glass-panel { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); text-align: center; position: relative; overflow: hidden; transition: background-color 0.3s ease, border 0.3s ease; }
-        h1 { margin: 0; margin-bottom: 2rem; font-size: 2rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.05em; }
+        h1 { margin: 0; margin-bottom: 1rem; font-size: 2rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.05em; }
+        .page-description { font-size: 1.1rem; line-height: 1.7; opacity: 0.8; margin-bottom: 2rem; }
         .theme-toggle-btn { position: absolute; top: 1.5rem; right: 1.5rem; background: transparent; border: 1px solid var(--glass-border); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--text-color); transition: all 0.3s ease; }
         .theme-toggle-btn:hover { background: var(--glass-border); }
-
-        /* Nav */
         .main-nav { width: 100%; padding: 1rem 0; margin-bottom: -1rem; }
-        .main-nav .container { display: flex; justify-content: center; gap: 1rem; }
+        .main-nav .container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
         .nav-link { color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.7; transition: all 0.3s ease; padding: 0.5rem 1rem; border: 1px solid transparent; border-radius: 50px; }
         .nav-link:hover { opacity: 1; background: var(--card-bg); }
         .nav-link.active { opacity: 1; background: var(--card-bg); border-color: var(--glass-border); }
-        
-        /* Lunch Page specific */
         #recommendation-area { min-height: 120px; display: flex; justify-content: center; align-items: center; margin-bottom: 2rem; }
         #lunch-result { font-size: 2.5rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0; transform: scale(0.8); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         #lunch-result.show { opacity: 1; transform: scale(1); }
         .btn-recommend { background: var(--primary-gradient); border: none; color: white; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4); text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
         .btn-recommend:hover { transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5); filter: brightness(1.1); }
-        
-        @media (max-width: 480px) {
-            body { padding: 1rem 0; gap: 1rem; }
-            h1 { font-size: 1.8rem; }
-            #lunch-result { font-size: 2rem; }
-        }
+        .footer { text-align: center; padding: 2rem 0; font-size: 0.9rem; opacity: 0.6; }
+        .footer a { color: var(--text-color); text-decoration: none; margin: 0 0.5rem; }
+        .footer a:hover { opacity: 0.8; }
     </style>
 </head>
 <body>
@@ -72,6 +38,8 @@
         <div class="container">
             <a href="index.html" class="nav-link">로또 생성기</a>
             <a href="lunch.html" class="nav-link active">점심 추천</a>
+            <a href="about.html" class="nav-link">소개</a>
+            <a href="privacy.html" class="nav-link">개인정보처리방침</a>
         </div>
     </nav>
 
@@ -79,20 +47,29 @@
         <div class="glass-panel">
             <button id="theme-toggle" class="theme-toggle-btn"></button>
             <h1>오늘 뭐 먹지?</h1>
+            <p class="page-description">매일 반복되는 점심 메뉴 고민, 이제 그만! 아래 버튼을 눌러 다양한 메뉴 중 하나를 무작위로 추천받고, 결정의 어려움을 해결해 보세요.</p>
             <div id="recommendation-area">
                 <div id="lunch-result"></div>
             </div>
             <button class="btn-recommend" onclick="recommendLunch()">점심 메뉴 추천!</button>
         </div>
     </div>
+    
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Your Website. All Rights Reserved.</p>
+            <p>
+                <a href="about.html">소개</a> |
+                <a href="privacy.html">개인정보처리방침</a>
+            </p>
+        </div>
+    </footer>
 
     <script>
         const lunchMenu = [ "제육볶음", "김치찌개", "된장찌개", "부대찌개", "돈까스", "비빔밥", "국밥", "짜장면", "짬뽕", "라멘", "카레", "서브웨이", "햄버거", "뼈해장국", "순두부찌개", "냉면", "칼국수", "수제비", "마라탕", "쌀국수", "초밥", "회덮밥", "알탕" ];
         const resultEl = document.getElementById('lunch-result');
-
         function recommendLunch() {
             resultEl.classList.remove('show');
-            
             setTimeout(() => {
                 const randomIndex = Math.floor(Math.random() * lunchMenu.length);
                 resultEl.textContent = lunchMenu[randomIndex];
@@ -101,8 +78,6 @@
         }
         resultEl.textContent = '???';
         resultEl.classList.add('show');
-
-        // Theme Toggle Script
         const themeToggle = document.getElementById('theme-toggle');
         const htmlEl = document.documentElement;
         const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;

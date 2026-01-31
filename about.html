@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-2981283253767611">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2981283253767611"
+     crossorigin="anonymous"></script>
+    <title>사이트 소개</title>
+    <style>
+        html[data-theme="dark"] { --bg-color: #0f172a; --card-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); --text-color: #f8fafc; }
+        html[data-theme="light"] { --bg-color: #f8fafc; --card-bg: rgba(255, 255, 255, 0.8); --glass-border: rgba(0, 0, 0, 0.1); --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); --text-color: #0f172a; }
+        body { margin: 0; padding: 2rem 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 20%); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 2rem; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+        .container { width: 100%; max-width: 600px; padding: 0 2rem; box-sizing: border-box; }
+        .glass-panel { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); text-align: left; position: relative; overflow: hidden; transition: background-color 0.3s ease, border 0.3s ease; }
+        h1 { margin-top: 0; margin-bottom: 2rem; font-size: 2rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-align: center; }
+        p { line-height: 1.8; font-size: 1.1rem; opacity: 0.9; }
+        .main-nav { width: 100%; padding: 1rem 0; margin-bottom: -1rem; }
+        .main-nav .container { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+        .nav-link { color: var(--text-color); text-decoration: none; font-size: 1rem; font-weight: 600; opacity: 0.7; transition: all 0.3s ease; padding: 0.5rem 1rem; border: 1px solid transparent; border-radius: 50px; }
+        .nav-link:hover { opacity: 1; background: var(--card-bg); }
+        .nav-link.active { opacity: 1; background: var(--card-bg); border-color: var(--glass-border); }
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav">
+        <div class="container">
+            <a href="index.html" class="nav-link">로또 생성기</a>
+            <a href="lunch.html" class="nav-link">점심 추천</a>
+            <a href="about.html" class="nav-link active">소개</a>
+            <a href="privacy.html" class="nav-link">개인정보처리방침</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="glass-panel">
+            <h1>소개</h1>
+            <p>안녕하세요! 저희 웹사이트에 방문해주셔서 감사합니다.</p>
+            <p>이곳은 일상 속 소소한 즐거움과 편리함을 드리기 위해 만들어진 공간입니다. 현재 아래와 같은 두 가지 주요 기능을 제공하고 있습니다.</p>
+            <ul>
+                <li><strong>로또 번호 생성기:</strong> 매주 어떤 번호를 선택할지 고민될 때, 간단한 클릭으로 행운의 번호 조합을 얻어보세요. 재미는 물론, 예상치 못한 행운이 찾아올 수도 있습니다.</li>
+                <li><strong>점심 메뉴 추천:</strong> "오늘 뭐 먹지?"는 직장인들의 영원한 숙제입니다. 더 이상 고민하지 마시고, 점심 추천 기능으로 메뉴를 결정하는 데 도움을 받아보세요.</li>
+            </ul>
+            <p>앞으로도 사용자의 일상에 활력을 불어넣을 수 있는 새롭고 유용한 기능들을 꾸준히 추가해나갈 예정입니다. 저희 사이트가 여러분의 하루에 작은 미소를 더할 수 있기를 바랍니다.</p>
+        </div>
+    </div>
+
+</body>
+</html>
