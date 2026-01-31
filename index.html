@@ -14,8 +14,8 @@
         .container { width: 100%; max-width: 600px; padding: 0 2rem; box-sizing: border-box; }
         .glass-panel { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); text-align: center; position: relative; overflow: hidden; transition: background-color 0.3s ease, border 0.3s ease; }
         h1 { margin-top: 0; margin-bottom: 1rem; font-size: 2rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.05em; text-transform: uppercase; }
-        h2 { text-align: center; }
-        .page-description { font-size: 1.1rem; line-height: 1.7; opacity: 0.8; margin-bottom: 2rem; }
+        h2 { text-align: center; margin-bottom: 2rem; }
+        .page-description { font-size: 1.1rem; line-height: 1.7; opacity: 0.8; margin-bottom: 2rem; text-align: left;}
         .theme-toggle-btn { position: absolute; top: 1.5rem; right: 1.5rem; background: transparent; border: 1px solid var(--glass-border); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--text-color); transition: all 0.3s ease; }
         .theme-toggle-btn:hover { background: var(--glass-border); }
         .main-nav { width: 100%; padding: 1rem 0; margin-bottom: -1rem; }
@@ -36,6 +36,26 @@
         .footer { text-align: center; padding: 2rem 0; font-size: 0.9rem; opacity: 0.6; }
         .footer a { color: var(--text-color); text-decoration: none; margin: 0 0.5rem; }
         .footer a:hover { opacity: 0.8; }
+        
+        /* Form Section */
+        .form-group { margin-bottom: 1.5rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; color: var(--text-color); }
+        .form-group input, .form-group textarea { width: 100%; padding: 1rem; background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border); border-radius: 8px; color: var(--text-color); font-size: 1rem; transition: all 0.3s ease; box-sizing: border-box; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.3); }
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .form-submit-btn { background: var(--primary-gradient); border: none; color: white; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4); text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
+        .form-submit-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5); filter: brightness(1.1); }
+        html[data-theme="light"] .form-group input, html[data-theme="light"] .form-group textarea { background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0, 0, 0, 0.1); color: var(--text-color); }
+        html[data-theme="light"] .form-group input:focus, html[data-theme="light"] .form-group textarea:focus { box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.3); }
+
+        @keyframes slideUpFade { to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 480px) {
+            body { padding: 1rem 0; gap: 1rem; }
+            .lotto-row { flex-direction: column; gap: 0.8rem; }
+            .bonus-wrapper { border-left: none; margin-left: 0; padding-left: 0; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 0.5rem; width: 100%; justify-content: center; }
+            .balls-wrapper { gap: 0.3rem; }
+            .btn-container { flex-direction: column; }
+        }
     </style>
 </head>
 <body>
@@ -114,7 +134,44 @@
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     <script>
-        // Lotto, Theme Scripts...
+        // Lotto Script
+        let setCounter = 0;
+        const currentContainer = document.getElementById('current-results');
+        const historyContainer = document.getElementById('history-results');
+        const historyWrapper = document.getElementById('history-container');
+        const placeholderHTML = `<div class="placeholder">Press button to start</div>`;
+        function clearResults() { currentContainer.innerHTML = placeholderHTML; historyContainer.innerHTML = ''; historyWrapper.style.display = 'none'; setCounter = 0; }
+        function getBallColorClass(num) { if (num <= 10) return 'color-group-1'; if (num <= 20) return 'color-group-2'; if (num <= 30) return 'color-group-3'; if (num <= 40) return 'color-group-4'; return 'color-group-5'; }
+        function createBall(num) { const ball = document.createElement('div'); ball.className = `ball ${getBallColorClass(num)}`; ball.textContent = num; return ball; }
+        function generateNumbers() { const numbers = new Set(); while(numbers.size < 7) { numbers.add(Math.floor(Math.random() * 45) + 1); } return Array.from(numbers); }
+        async function generateLotto() {
+            const currentSets = currentContainer.querySelectorAll('.lotto-row');
+            if (currentSets.length > 0) { currentSets.forEach(node => historyContainer.prepend(node)); historyWrapper.style.display = 'block'; }
+            currentContainer.innerHTML = '';
+            for (let i = 0; i < 5; i++) {
+                const rawNumbers = generateNumbers(); const mainNumbers = rawNumbers.slice(0, 6).sort((a, b) => a - b); const bonusNumber = rawNumbers[6];
+                const row = document.createElement('div'); row.className = 'lotto-row'; row.style.animationDelay = `${i * 0.1}s`;
+                const label = document.createElement('div'); label.className = 'set-label'; label.textContent = String.fromCharCode(65 + setCounter + i); row.appendChild(label);
+                const mainWrapper = document.createElement('div'); mainWrapper.className = 'balls-wrapper'; mainNumbers.forEach(num => mainWrapper.appendChild(createBall(num))); row.appendChild(mainWrapper);
+                const bonusWrapper = document.createElement('div'); bonusWrapper.className = 'bonus-wrapper'; const plus = document.createElement('span'); plus.className = 'plus-sign'; plus.textContent = '+'; bonusWrapper.appendChild(plus); bonusWrapper.appendChild(createBall(bonusNumber)); row.appendChild(bonusWrapper);
+                currentContainer.appendChild(row);
+                await new Promise(r => setTimeout(r, 50));
+            }
+            setCounter += 5;
+        }
+        clearResults();
+
+        // Theme Toggle Script
+        const themeToggle = document.getElementById('theme-toggle');
+        const htmlEl = document.documentElement;
+        const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
+        const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+        function setDarkTheme() { htmlEl.dataset.theme = 'dark'; themeToggle.innerHTML = sunIcon; localStorage.setItem('theme', 'dark'); }
+        function setLightTheme() { htmlEl.dataset.theme = 'light'; themeToggle.innerHTML = moonIcon; localStorage.setItem('theme', 'light'); }
+        themeToggle.addEventListener('click', () => { if (htmlEl.dataset.theme === 'dark') { setLightTheme(); } else { setDarkTheme(); } });
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'light') { setLightTheme(); } else if (savedTheme === 'dark') { setDarkTheme(); } else if (prefersDark) { setDarkTheme(); } else { setLightTheme(); }
     </script>
 </body>
 </html>
