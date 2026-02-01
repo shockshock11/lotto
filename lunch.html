@@ -16,7 +16,7 @@
         body { margin: 0; padding: 2rem 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 20%); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; align-items: center; gap: 2rem; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
         .container { width: 100%; max-width: 600px; padding: 0 2rem; box-sizing: border-box; }
         .glass-panel { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); text-align: center; position: relative; overflow: hidden; transition: background-color 0.3s ease, border 0.3s ease; }
-        h1 { margin: 0; margin-bottom: 1rem; font-size: 2rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.05em; }
+        h1 { margin: 0; margin-bottom: 1rem; font-size: 2rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: -0.05em; }
         .page-description { font-size: 1.1rem; line-height: 1.7; opacity: 0.8; margin-bottom: 2rem; }
         .theme-toggle-btn { position: absolute; top: 1.5rem; right: 1.5rem; background: transparent; border: 1px solid var(--glass-border); border-radius: 50%; width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; cursor: pointer; color: var(--text-color); transition: all 0.3s ease; }
         .theme-toggle-btn:hover { background: var(--glass-border); }
@@ -26,7 +26,7 @@
         .nav-link:hover { opacity: 1; background: var(--card-bg); }
         .nav-link.active { opacity: 1; background: var(--card-bg); border-color: var(--glass-border); }
         #recommendation-area { min-height: 120px; display: flex; justify-content: center; align-items: center; margin-bottom: 2rem; }
-        #lunch-result { font-size: 2.5rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0; transform: scale(0.8); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        #lunch-result { font-size: 2.5rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; opacity: 0; transform: scale(0.8); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         #lunch-result.show { opacity: 1; transform: scale(1); }
         .btn-recommend { background: var(--primary-gradient); border: none; color: white; padding: 1rem 3rem; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4); text-transform: uppercase; letter-spacing: 0.05em; width: 100%; }
         .btn-recommend:hover { transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5); filter: brightness(1.1); }
