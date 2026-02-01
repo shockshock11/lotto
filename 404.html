@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 페이지를 찾을 수 없습니다</title>
+    <style>
+        html[data-theme="dark"] { --bg-color: #0f172a; --card-bg: rgba(255, 255, 255, 0.05); --glass-border: rgba(255, 255, 255, 0.1); --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%); --text-color: #f8fafc; }
+        html[data-theme="light"] { --bg-color: #f8fafc; --card-bg: rgba(255, 255, 255, 0.8); --glass-border: rgba(0, 0, 0, 0.1); --primary-gradient: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); --text-color: #0f172a; }
+        body { margin: 0; padding: 2rem 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; background-color: var(--bg-color); background-image: radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 20%), radial-gradient(circle at 90% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 20%); color: var(--text-color); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; overflow-x: hidden; transition: background-color 0.3s ease, color 0.3s ease; }
+        .container { width: 100%; max-width: 600px; padding: 0 2rem; box-sizing: border-box; text-align: center; }
+        .glass-panel { background: var(--card-bg); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 24px; padding: 2.5rem; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); }
+        h1 { margin-top: 0; margin-bottom: 1rem; font-size: 4rem; font-weight: 800; background: var(--primary-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        p { line-height: 1.8; font-size: 1.1rem; opacity: 0.9; }
+        .btn-home { display: inline-block; margin-top: 2rem; background: var(--primary-gradient); border: none; color: white; padding: 1rem 2rem; font-size: 1.1rem; font-weight: 700; border-radius: 50px; cursor: pointer; text-decoration: none; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.4); }
+        .btn-home:hover { transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.5); filter: brightness(1.1); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="glass-panel">
+            <h1>404</h1>
+            <p>죄송합니다. 요청하신 페이지를 찾을 수 없습니다.</p>
+            <p>입력하신 주소가 정확한지 확인하시거나, 아래 버튼을 눌러 홈으로 이동해주세요.</p>
+            <a href="/index.html" class="btn-home">홈으로 돌아가기</a>
+        </div>
+    </div>
+</body>
+</html>
