@@ -215,6 +215,15 @@
         </div>
     </div>
     <script>
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://lotto-15.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <script>
         // Lotto Script
         let setCounter = 0;
         const currentContainer = document.getElementById('current-results');
@@ -254,4 +263,5 @@
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         if (savedTheme === 'light') { setLightTheme(); } else if (savedTheme === 'dark') { setDarkTheme(); } else if (prefersDark) { setDarkTheme(); } else { setLightTheme(); }
     </script>
+</body>
 </html>
