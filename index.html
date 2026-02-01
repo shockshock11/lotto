@@ -87,6 +87,18 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://lotto-15.netlify.app/index.html"
+      }]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
       "@type": "SoftwareApplication",
       "name": "AI 로또 번호 생성기",
       "operatingSystem": "Web",
@@ -100,6 +112,34 @@
         "@type": "Offer",
         "price": "0"
       }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "이 로또 번호 생성기는 어떻게 작동하나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "저희 로또 번호 생성기는 무작위 알고리즘을 사용하여 1부터 45까지의 숫자 중 7개를 선택합니다. 이 중 6개는 주요 번호, 1개는 보너스 번호입니다. '번호 생성' 버튼을 누를 때마다 새로운 조합이 생성됩니다."
+        }
+      },{
+        "@type": "Question",
+        "name": "AI가 분석한 번호라는 것이 사실인가요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "현재 버전은 재미를 위한 무작위 번호 생성기입니다. 'AI 분석'이라는 표현은 흥미를 더하기 위한 요소이며, 향후 실제 통계 및 AI 분석 기능을 도입할 계획입니다."
+        }
+      },{
+        "@type": "Question",
+        "name": "이 사이트에서 생성된 번호로 당첨된 사람이 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "저희는 사용자의 당첨 여부를 추적하지 않으므로, 이 사이트를 통해 당첨되었는지 여부는 알 수 없습니다. 저희 서비스는 번호 선택의 어려움을 덜어드리고 재미를 드리기 위한 목적으로 운영됩니다. 모든 결과는 전적으로 사용자의 행운에 달려 있습니다."
+        }
+      }]
     }
     </script>
 </head>
@@ -158,9 +198,27 @@
         </div>
     </div>
 
+    <div class="container" style="margin-top: 2rem;">
+        <div class="glass-panel">
+            <h2>자주 묻는 질문 (FAQ)</h2>
+            <div class="faq-item">
+                <h3>이 로또 번호 생성기는 어떻게 작동하나요?</h3>
+                <p>저희 로또 번호 생성기는 무작위 알고리즘을 사용하여 1부터 45까지의 숫자 중 7개를 선택합니다. 이 중 6개는 주요 번호, 1개는 보너스 번호입니다. '번호 생성' 버튼을 누를 때마다 새로운 조합이 생성됩니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>AI가 분석한 번호라는 것이 사실인가요?</h3>
+                <p>현재 버전은 재미를 위한 무작위 번호 생성기입니다. 'AI 분석'이라는 표현은 흥미를 더하기 위한 요소이며, 향후 실제 통계 및 AI 분석 기능을 도입할 계획입니다.</p>
+            </div>
+            <div class="faq-item">
+                <h3>이 사이트에서 생성된 번호로 당첨된 사람이 있나요?</h3>
+                <p>저희는 사용자의 당첨 여부를 추적하지 않으므로, 이 사이트를 통해 당첨되었는지 여부는 알 수 없습니다. 저희 서비스는 번호 선택의 어려움을 덜어드리고 재미를 드리기 위한 목적으로 운영됩니다. 모든 결과는 전적으로 사용자의 행운에 달려 있습니다.</p>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 Your Website. All Rights Reserved.</p>
+            <p>&copy; 2026 Your Website. All Rights Reserved. | Last Updated: 2026-02-02</p>
             <p>
                 <a href="about.html">소개</a> |
                 <a href="privacy.html">개인정보처리방침</a>
